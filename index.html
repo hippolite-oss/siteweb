@@ -444,8 +444,13 @@
 
         /* Page Styles */
         .page {
+            display: none;
             padding-top: 120px;
             min-height: 100vh;
+        }
+
+        .page.active {
+            display: block;
         }
 
         .page-content {
@@ -552,10 +557,10 @@
             </div>
             <nav id="mainNav">
                 <ul>
-                    <li><a href="index.html" class="active">Accueil</a></li>
-                    <li><a href="about.html">À Propos</a></li>
-                    <li><a href="services.html">Services</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="#home" class="nav-link active" data-page="home">Accueil</a></li>
+                    <li><a href="#about" class="nav-link" data-page="about">À Propos</a></li>
+                    <li><a href="#services" class="nav-link" data-page="services">Services</a></li>
+                    <li><a href="#contact" class="nav-link" data-page="contact">Contact</a></li>
                 </ul>
             </nav>
         </div>
@@ -571,8 +576,8 @@
                     <h2>Bienvenue à l'Université GASA</h2>
                     <p>Excellence académique, innovation et développement personnel depuis 1985. Rejoignez notre communauté d'apprenants passionnés et préparez-vous à façonner l'avenir.</p>
                     <div class="hero-btns">
-                        <a href="about.html" class="btn">Découvrir l'Université</a>
-                        <a href="contact.html" class="btn btn-secondary">Postuler Maintenant</a>
+                        <a href="#about" class="btn nav-link" data-page="about">Découvrir l'Université</a>
+                        <a href="#contact" class="btn btn-secondary nav-link" data-page="contact">Postuler Maintenant</a>
                     </div>
                 </div>
             </div>
@@ -589,7 +594,7 @@
                             <h3>Une Université d'Excellence depuis 1985</h3>
                             <p>Fondée en 1985, l'Université GASA s'est imposée comme un leader dans l'enseignement supérieur, combinant tradition académique et innovation pédagogique.</p>
                             <p>Nous offrons un environnement d'apprentissage stimulant qui encourage la pensée critique, la créativité et l'engagement communautaire.</p>
-                            <a href="about.html" class="btn">En savoir plus</a>
+                            <a href="#about" class="btn nav-link" data-page="about">En savoir plus</a>
                         </div>
                         <div class="about-image">
                             <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Campus de l'Université GASA">
@@ -613,7 +618,7 @@
                             <div class="service-content">
                                 <h3>Formations Académiques</h3>
                                 <p>Des programmes de licence, master et doctorat dans divers domaines d'études, dispensés par des professeurs renommés.</p>
-                                <a href="services.html" class="btn">En savoir plus</a>
+                                <a href="#services" class="btn nav-link" data-page="services">En savoir plus</a>
                             </div>
                         </div>
                         <div class="service-card">
@@ -623,7 +628,7 @@
                             <div class="service-content">
                                 <h3>Recherche et Innovation</h3>
                                 <p>Des centres de recherche de pointe et des programmes d'innovation pour repousser les frontières de la connaissance.</p>
-                                <a href="services.html" class="btn">En savoir plus</a>
+                                <a href="#services" class="btn nav-link" data-page="services">En savoir plus</a>
                             </div>
                         </div>
                         <div class="service-card">
@@ -633,7 +638,7 @@
                             <div class="service-content">
                                 <h3>Vie Étudiante</h3>
                                 <p>Une communauté étudiante dynamique avec des clubs, des associations et des activités enrichissantes.</p>
-                                <a href="services.html" class="btn">En savoir plus</a>
+                                <a href="#services" class="btn nav-link" data-page="services">En savoir plus</a>
                             </div>
                         </div>
                     </div>
@@ -655,21 +660,21 @@
                                     <i class="fas fa-map-marker-alt"></i>
                                     <div>
                                         <h4>Adresse</h4>
-                                        <p>123 Avenue de l'Université<br>75000 Paris, France</p>
+                                        <p>123 Avenue de l'Université<br>Cotonou, Bénin</p>
                                     </div>
                                 </div>
                                 <div class="contact-detail">
                                     <i class="fas fa-phone"></i>
                                     <div>
                                         <h4>Téléphone</h4>
-                                        <p>+33 1 23 45 67 89</p>
+                                        <p>+229 12 34 56 78</p>
                                     </div>
                                 </div>
                                 <div class="contact-detail">
                                     <i class="fas fa-envelope"></i>
                                     <div>
                                         <h4>Email</h4>
-                                        <p>contact@universite-gasa.fr</p>
+                                        <p>contact@universite-gasa.bj</p>
                                     </div>
                                 </div>
                             </div>
@@ -837,21 +842,21 @@
                                 <i class="fas fa-map-marker-alt"></i>
                                 <div>
                                     <h4>Adresse</h4>
-                                    <p>123 Avenue de l'Université<br>75000 Paris, France</p>
+                                    <p>123 Avenue de l'Université<br>Cotonou, Bénin</p>
                                 </div>
                             </div>
                             <div class="contact-detail">
                                 <i class="fas fa-phone"></i>
                                 <div>
                                     <h4>Téléphone</h4>
-                                    <p>+33 1 23 45 67 89</p>
+                                    <p>+229 12 34 56 78</p>
                                 </div>
                             </div>
                             <div class="contact-detail">
                                 <i class="fas fa-envelope"></i>
                                 <div>
                                     <h4>Email</h4>
-                                    <p>contact@universite-gasa.fr</p>
+                                    <p>contact@universite-gasa.bj</p>
                                 </div>
                             </div>
                             <div class="contact-detail">
@@ -893,7 +898,7 @@
                     </div>
                 </div>
                 <div class="map-container">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.991440608208!2d2.292292615853889!3d48.85837360866132!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66fe1dd8933c5%3A0x5f4b4b8b0d3c8b8c!2sTour%20Eiffel!5e0!3m2!1sfr!2sfr!4v1620221234567!5m2!1sfr!2sfr" allowfullscreen="" loading="lazy"></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3970.278122936714!2d2.3636313!3d6.3786777!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1023566b7c17c8d7%3A0x83e0061130fc8b2e!2sGasa%20Formation!5e0!3m2!1sfr!2sbj!4v169876543210!5m2!1sfr!2sbj" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
         </section>
@@ -916,27 +921,27 @@
                 <div class="footer-column">
                     <h3>Liens Rapides</h3>
                     <ul>
-                        <li><a href="index.html">Accueil</a></li>
-                        <li><a href="about.html">À Propos</a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="#home" class="nav-link" data-page="home">Accueil</a></li>
+                        <li><a href="#about" class="nav-link" data-page="about">À Propos</a></li>
+                        <li><a href="#services" class="nav-link" data-page="services">Services</a></li>
+                        <li><a href="#contact" class="nav-link" data-page="contact">Contact</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
                     <h3>Programmes</h3>
                     <ul>
-                        <li><a href="#">Licences</a></li>
-                        <li><a href="#">Masters</a></li>
-                        <li><a href="#">Doctorats</a></li>
-                        <li><a href="#">Formation Continue</a></li>
+                        <li><a href="#services" class="nav-link" data-page="services">Licences</a></li>
+                        <li><a href="#services" class="nav-link" data-page="services">Masters</a></li>
+                        <li><a href="#services" class="nav-link" data-page="services">Doctorats</a></li>
+                        <li><a href="#services" class="nav-link" data-page="services">Formation Continue</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
                     <h3>Contact</h3>
                     <ul>
-                        <li><i class="fas fa-map-marker-alt"></i> 123 Avenue de l'Université, 75000 Paris</li>
-                        <li><i class="fas fa-phone"></i> +33 1 23 45 67 89</li>
-                        <li><i class="fas fa-envelope"></i> contact@universite-gasa.fr</li>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Avenue de l'Université, Cotonou</li>
+                        <li><i class="fas fa-phone"></i> +229 12 34 56 78</li>
+                        <li><i class="fas fa-envelope"></i> contact@universite-gasa.bj</li>
                     </ul>
                 </div>
             </div>
@@ -952,7 +957,7 @@
             const menuToggle = document.getElementById('menuToggle');
             const mainNav = document.getElementById('mainNav');
             const pages = document.querySelectorAll('.page');
-            const navLinks = document.querySelectorAll('nav a');
+            const navLinks = document.querySelectorAll('.nav-link');
             
             // Menu mobile
             menuToggle.addEventListener('click', function() {
@@ -968,7 +973,7 @@
                     mainNav.classList.remove('active');
                     
                     // Récupérer l'ID de la page cible
-                    const targetPageId = this.getAttribute('href').replace('.html', '');
+                    const targetPageId = this.getAttribute('data-page');
                     
                     // Masquer toutes les pages
                     pages.forEach(page => {
@@ -986,6 +991,9 @@
                     
                     // Faire défiler vers le haut
                     window.scrollTo(0, 0);
+                    
+                    // Mettre à jour l'URL
+                    history.pushState(null, null, `#${targetPageId}`);
                 });
             });
             
@@ -997,6 +1005,28 @@
                     alert('Merci pour votre message! Nous vous répondrons dans les plus brefs délais.');
                     this.reset();
                 });
+            });
+            
+            // Gestion de l'URL au chargement de la page
+            window.addEventListener('load', function() {
+                const hash = window.location.hash.substring(1);
+                if (hash && document.getElementById(hash)) {
+                    // Masquer toutes les pages
+                    pages.forEach(page => {
+                        page.classList.remove('active');
+                    });
+                    
+                    // Afficher la page correspondant au hash
+                    document.getElementById(hash).classList.add('active');
+                    
+                    // Mettre à jour la navigation active
+                    navLinks.forEach(navLink => {
+                        navLink.classList.remove('active');
+                        if (navLink.getAttribute('data-page') === hash) {
+                            navLink.classList.add('active');
+                        }
+                    });
+                }
             });
         });
     </script>
