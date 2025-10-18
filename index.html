@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Université GASA - Excellence Académique</title>
+    <style>
+        /* Variables de couleurs */
+        :root {
+            --primary-color: #1a3d7c; /* Bleu universitaire principal */
+            --secondary-color: #e63946; /* Rouge pour les accents */
+            --light-color: #f8f9fa;
+            --dark-color: #343a40;
+            --text-color: #333;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        /* Reset et styles de base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #fff;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #0d2a5a;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: #c1121f;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary-color);
+        }
+
+        .section-title p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+            color: #666;
+        }
+
+        /* Header et Navigation */
+        header {
+            background-color: white;
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        .logo h1 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        nav ul {
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            font-weight: 600;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        nav ul li a:hover::after,
+        nav ul li a.active::after {
+            width: 100%;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(26, 61, 124, 0.8), rgba(26, 61, 124, 0.9)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 180px 0 100px;
+            margin-top: 80px;
+        }
+
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        .hero-btns {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+
+        /* Services Section */
+        .services {
+            background-color: var(--light-color);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .service-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .service-card:hover .service-img img {
+            transform: scale(1.1);
+        }
+
+        .service-content {
+            padding: 25px;
+        }
+
+        .service-content h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .contact-info h3 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .contact-details {
+            margin-bottom: 30px;
+        }
+
+        .contact-detail {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .contact-detail i {
+            color: var(--primary-color);
+            margin-right: 15px;
+            font-size: 1.2rem;
+            margin-top: 5px;
+        }
+
+        .contact-form .form-group {
+            margin-bottom: 20px;
+        }
+
+        .contact-form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+            transition: var(--transition);
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 60px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column ul li a:hover {
+            color: #ddd;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary-color);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .about-content,
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .about-image {
+                order: -1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            nav {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 80%;
+                height: calc(100vh - 80px);
+                background-color: white;
+                flex-direction: column;
+                transition: var(--transition);
+                box-shadow: var(--shadow);
+            }
+
+            nav.active {
+                left: 0;
+            }
+
+            nav ul {
+                flex-direction: column;
+                padding: 20px;
+            }
+
+            nav ul li {
+                margin: 15px 0;
+            }
+
+            .hero h2 {
+                font-size: 2.2rem;
+            }
+
+            .hero-btns {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .hero-btns .btn {
+                width: 100%;
+                max-width: 300px;
+                margin-bottom: 10px;
+            }
+        }
+
+        /* Page Styles */
+        .page {
+            padding-top: 120px;
+            min-height: 100vh;
+        }
+
+        .page-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .page-hero {
+            background: linear-gradient(rgba(26, 61, 124, 0.8), rgba(26, 61, 124, 0.9)), url('https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1464&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 80px 0;
+            margin-bottom: 50px;
+        }
+
+        .page-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .page-hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .about-page .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+
+        .value-card {
+            text-align: center;
+            padding: 30px 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .value-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .value-card i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .value-card h3 {
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .services-page .service-detail {
+            margin-bottom: 50px;
+        }
+
+        .service-detail h2 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 10px;
+        }
+
+        .service-detail img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .contact-page .map-container {
+            margin-top: 50px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 400px;
+            border: 0;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBmaWxsPSIjMWEzZDdjIiBkPSJNMjU2IDQ4QzE0MS4xIDQ4IDQ4IDE0MS4xIDQ4IDI1NnM5My4xIDIwOCAyMDggMjA4IDIwOC05My4xIDIwOC0yMDhTMzcwLjkgNDggMjU2IDQ4em0wIDM4NGMtOTcuMiAwLTE3Ni03OC44LTE3Ni0xNzZTMTU4LjggODAgMjU2IDgwczE3NiA3OC44IDE3NiAxNzYtNzguOCAxNzYtMTc2IDE3NnptMTI4LTI0MGMwLTE3LjctMTQuMy0zMi0zMi0zMkgxNjBjLTE3LjcgMC0zMiAxNC4zLTMyIDMydjMyYzAgMTcuNyAxNC4zIDMyIDMyIDMyaDE5MnY2NGgtNjRjLTE3LjcgMC0zMiAxNC4zLTMyIDMydjMyYzAgMTcuNyAxNC4zIDMyIDMyIDMyaDY0YzE3LjcgMCAzMi0xNC4zIDMyLTMyVjI0MGMwLTE3LjctMTQuMy0zMi0zMi0zMnoiLz48L3N2Zz4=" alt="Logo Université GASA">
+                <h1>Université GASA</h1>
+            </div>
+            <div class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="index.html" class="active">Accueil</a></li>
+                    <li><a href="about.html">À Propos</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="mainContent">
+        <!-- Page d'accueil -->
+        <section id="home" class="page active">
+            <!-- Hero Section -->
+            <div class="hero">
+                <div class="container">
+                    <h2>Bienvenue à l'Université GASA</h2>
+                    <p>Excellence académique, innovation et développement personnel depuis 1985. Rejoignez notre communauté d'apprenants passionnés et préparez-vous à façonner l'avenir.</p>
+                    <div class="hero-btns">
+                        <a href="about.html" class="btn">Découvrir l'Université</a>
+                        <a href="contact.html" class="btn btn-secondary">Postuler Maintenant</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- About Section -->
+            <section id="about-preview">
+                <div class="container">
+                    <div class="section-title">
+                        <h2>À Propos de GASA</h2>
+                        <p>Découvrez notre histoire, notre mission et notre vision pour l'éducation supérieure</p>
+                    </div>
+                    <div class="about-content">
+                        <div class="about-text">
+                            <h3>Une Université d'Excellence depuis 1985</h3>
+                            <p>Fondée en 1985, l'Université GASA s'est imposée comme un leader dans l'enseignement supérieur, combinant tradition académique et innovation pédagogique.</p>
+                            <p>Nous offrons un environnement d'apprentissage stimulant qui encourage la pensée critique, la créativité et l'engagement communautaire.</p>
+                            <a href="about.html" class="btn">En savoir plus</a>
+                        </div>
+                        <div class="about-image">
+                            <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Campus de l'Université GASA">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Services Section -->
+            <section id="services-preview" class="services">
+                <div class="container">
+                    <div class="section-title">
+                        <h2>Nos Services</h2>
+                        <p>Découvrez les programmes et services qui font de GASA un établissement d'exception</p>
+                    </div>
+                    <div class="services-grid">
+                        <div class="service-card">
+                            <div class="service-img">
+                                <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Formations académiques">
+                            </div>
+                            <div class="service-content">
+                                <h3>Formations Académiques</h3>
+                                <p>Des programmes de licence, master et doctorat dans divers domaines d'études, dispensés par des professeurs renommés.</p>
+                                <a href="services.html" class="btn">En savoir plus</a>
+                            </div>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-img">
+                                <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Recherche et Innovation">
+                            </div>
+                            <div class="service-content">
+                                <h3>Recherche et Innovation</h3>
+                                <p>Des centres de recherche de pointe et des programmes d'innovation pour repousser les frontières de la connaissance.</p>
+                                <a href="services.html" class="btn">En savoir plus</a>
+                            </div>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-img">
+                                <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Vie Étudiante">
+                            </div>
+                            <div class="service-content">
+                                <h3>Vie Étudiante</h3>
+                                <p>Une communauté étudiante dynamique avec des clubs, des associations et des activités enrichissantes.</p>
+                                <a href="services.html" class="btn">En savoir plus</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section id="contact-preview">
+                <div class="container">
+                    <div class="section-title">
+                        <h2>Contactez-nous</h2>
+                        <p>Nous sommes là pour répondre à toutes vos questions sur l'Université GASA</p>
+                    </div>
+                    <div class="contact-container">
+                        <div class="contact-info">
+                            <h3>Informations de Contact</h3>
+                            <div class="contact-details">
+                                <div class="contact-detail">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <div>
+                                        <h4>Adresse</h4>
+                                        <p>123 Avenue de l'Université<br>75000 Paris, France</p>
+                                    </div>
+                                </div>
+                                <div class="contact-detail">
+                                    <i class="fas fa-phone"></i>
+                                    <div>
+                                        <h4>Téléphone</h4>
+                                        <p>+33 1 23 45 67 89</p>
+                                    </div>
+                                </div>
+                                <div class="contact-detail">
+                                    <i class="fas fa-envelope"></i>
+                                    <div>
+                                        <h4>Email</h4>
+                                        <p>contact@universite-gasa.fr</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="social-links">
+                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            </div>
+                        </div>
+                        <div class="contact-form">
+                            <form id="contactForm">
+                                <div class="form-group">
+                                    <label for="name">Nom Complet</label>
+                                    <input type="text" id="name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Adresse Email</label>
+                                    <input type="email" id="email" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="subject">Sujet</label>
+                                    <input type="text" id="subject" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="message">Message</label>
+                                    <textarea id="message" rows="5" required></textarea>
+                                </div>
+                                <button type="submit" class="btn">Envoyer le Message</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <!-- Page À Propos -->
+        <section id="about" class="page">
+            <div class="page-hero">
+                <div class="container">
+                    <h1>À Propos de l'Université GASA</h1>
+                    <p>Découvrez notre histoire, notre mission et notre vision pour l'éducation</p>
+                </div>
+            </div>
+            <div class="container page-content about-page">
+                <div class="about-content">
+                    <div class="about-text">
+                        <h2>Notre Histoire</h2>
+                        <p>Fondée en 1985, l'Université GASA a été créée avec la vision de fournir une éducation supérieure de qualité accessible à tous. Depuis ses débuts modestes avec seulement 200 étudiants, notre institution a grandi pour devenir l'une des universités les plus respectées du pays, accueillant aujourd'hui plus de 15 000 étudiants.</p>
+                        <p>Notre nom, GASA, représente les valeurs fondamentales qui guident notre institution : Grandeur, Ambition, Savoir et Accomplissement.</p>
+                    </div>
+                    <div class="about-image">
+                        <img src="https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1464&q=80" alt="Histoire de l'Université GASA">
+                    </div>
+                </div>
+
+                <div class="values-grid">
+                    <div class="value-card">
+                        <i class="fas fa-graduation-cap"></i>
+                        <h3>Excellence Académique</h3>
+                        <p>Nous nous engageons à offrir une éducation de la plus haute qualité, avec des programmes rigoureux et des professeurs dévoués.</p>
+                    </div>
+                    <div class="value-card">
+                        <i class="fas fa-lightbulb"></i>
+                        <h3>Innovation</h3>
+                        <p>Nous encourageons la pensée créative et l'innovation à travers la recherche et l'expérimentation.</p>
+                    </div>
+                    <div class="value-card">
+                        <i class="fas fa-users"></i>
+                        <h3>Communauté</h3>
+                        <p>Nous cultivons un environnement inclusif où chaque membre de notre communauté peut s'épanouir.</p>
+                    </div>
+                    <div class="value-card">
+                        <i class="fas fa-globe"></i>
+                        <h3>Ouverture Internationale</h3>
+                        <p>Nous préparons nos étudiants à réussir dans un monde globalisé avec des programmes internationaux.</p>
+                    </div>
+                </div>
+
+                <div class="about-content">
+                    <div class="about-image">
+                        <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Mission de l'Université GASA">
+                    </div>
+                    <div class="about-text">
+                        <h2>Notre Mission</h2>
+                        <p>Notre mission est de former des leaders éthiques et compétents qui contribueront positivement à la société. Nous visons à:</p>
+                        <ul>
+                            <li>• Offrir une éducation transformatrice qui prépare les étudiants aux défis du 21e siècle</li>
+                            <li>• Favoriser un environnement de recherche et d'innovation</li>
+                            <li>• Développer des partenariats avec l'industrie et la communauté</li>
+                            <li>• Promouvoir les valeurs de diversité, d'équité et d'inclusion</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Page Services -->
+        <section id="services" class="page">
+            <div class="page-hero">
+                <div class="container">
+                    <h1>Nos Services</h1>
+                    <p>Découvrez les programmes et services qui font de GASA un établissement d'exception</p>
+                </div>
+            </div>
+            <div class="container page-content services-page">
+                <div class="service-detail">
+                    <h2>Formations Académiques</h2>
+                    <p>L'Université GASA propose une large gamme de programmes académiques conçus pour répondre aux besoins d'un monde en constante évolution. Nos formations couvrent divers domaines :</p>
+                    <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Formations académiques">
+                    <ul>
+                        <li>• Sciences et Technologies</li>
+                        <li>• Sciences Humaines et Sociales</li>
+                        <li>• Économie et Gestion</li>
+                        <li>• Arts et Design</li>
+                        <li>• Médecine et Santé</li>
+                    </ul>
+                    <p>Tous nos programmes sont accrédités et conçus avec l'aide de professionnels de l'industrie pour garantir leur pertinence et leur qualité.</p>
+                </div>
+
+                <div class="service-detail">
+                    <h2>Recherche et Innovation</h2>
+                    <p>La recherche est au cœur de notre mission éducative. Nos centres de recherche travaillent sur des projets innovants dans divers domaines :</p>
+                    <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Recherche et innovation">
+                    <ul>
+                        <li>• Intelligence Artificielle et Robotique</li>
+                        <li>• Biotechnologies et Santé</li>
+                        <li>• Énergies Renouvelables et Développement Durable</li>
+                        <li>• Sciences Sociales Appliquées</li>
+                        <li>• Arts Numériques et Créativité</li>
+                    </ul>
+                    <p>Nos étudiants et chercheurs bénéficient de laboratoires équipés des dernières technologies et de partenariats avec des entreprises leaders.</p>
+                </div>
+
+                <div class="service-detail">
+                    <h2>Vie Étudiante</h2>
+                    <p>La vie sur le campus de GASA est riche et diversifiée, offrant de nombreuses opportunités d'épanouissement personnel et professionnel :</p>
+                    <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Vie étudiante">
+                    <ul>
+                        <li>• Plus de 50 clubs et associations étudiantes</li>
+                        <li>• Programmes de mentorat et développement du leadership</li>
+                        <li>• Événements culturels et artistiques tout au long de l'année</li>
+                        <li>• Installations sportives de pointe</li>
+                        <li>• Services de soutien et bien-être</li>
+                    </ul>
+                    <p>Notre campus est conçu pour favoriser les rencontres, l'échange et la collaboration entre étudiants de tous horizons.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Page Contact -->
+        <section id="contact" class="page">
+            <div class="page-hero">
+                <div class="container">
+                    <h1>Contactez-nous</h1>
+                    <p>Nous sommes là pour répondre à toutes vos questions sur l'Université GASA</p>
+                </div>
+            </div>
+            <div class="container page-content contact-page">
+                <div class="contact-container">
+                    <div class="contact-info">
+                        <h3>Informations de Contact</h3>
+                        <div class="contact-details">
+                            <div class="contact-detail">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div>
+                                    <h4>Adresse</h4>
+                                    <p>123 Avenue de l'Université<br>75000 Paris, France</p>
+                                </div>
+                            </div>
+                            <div class="contact-detail">
+                                <i class="fas fa-phone"></i>
+                                <div>
+                                    <h4>Téléphone</h4>
+                                    <p>+33 1 23 45 67 89</p>
+                                </div>
+                            </div>
+                            <div class="contact-detail">
+                                <i class="fas fa-envelope"></i>
+                                <div>
+                                    <h4>Email</h4>
+                                    <p>contact@universite-gasa.fr</p>
+                                </div>
+                            </div>
+                            <div class="contact-detail">
+                                <i class="fas fa-clock"></i>
+                                <div>
+                                    <h4>Heures d'ouverture</h4>
+                                    <p>Lun - Ven: 8h00 - 18h00<br>Sam: 9h00 - 12h00</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    <div class="contact-form">
+                        <h3>Envoyez-nous un message</h3>
+                        <form id="contactPageForm">
+                            <div class="form-group">
+                                <label for="contactName">Nom Complet</label>
+                                <input type="text" id="contactName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="contactEmail">Adresse Email</label>
+                                <input type="email" id="contactEmail" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="contactSubject">Sujet</label>
+                                <input type="text" id="contactSubject" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="contactMessage">Message</label>
+                                <textarea id="contactMessage" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="btn">Envoyer le Message</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.991440608208!2d2.292292615853889!3d48.85837360866132!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66fe1dd8933c5%3A0x5f4b4b8b0d3c8b8c!2sTour%20Eiffel!5e0!3m2!1sfr!2sfr!4v1620221234567!5m2!1sfr!2sfr" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Université GASA</h3>
+                    <p>Excellence académique, innovation et développement personnel depuis 1985.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Liens Rapides</h3>
+                    <ul>
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="about.html">À Propos</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Programmes</h3>
+                    <ul>
+                        <li><a href="#">Licences</a></li>
+                        <li><a href="#">Masters</a></li>
+                        <li><a href="#">Doctorats</a></li>
+                        <li><a href="#">Formation Continue</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Avenue de l'Université, 75000 Paris</li>
+                        <li><i class="fas fa-phone"></i> +33 1 23 45 67 89</li>
+                        <li><i class="fas fa-envelope"></i> contact@universite-gasa.fr</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Université GASA. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation entre les pages
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.getElementById('menuToggle');
+            const mainNav = document.getElementById('mainNav');
+            const pages = document.querySelectorAll('.page');
+            const navLinks = document.querySelectorAll('nav a');
+            
+            // Menu mobile
+            menuToggle.addEventListener('click', function() {
+                mainNav.classList.toggle('active');
+            });
+            
+            // Navigation entre les pages
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Fermer le menu mobile si ouvert
+                    mainNav.classList.remove('active');
+                    
+                    // Récupérer l'ID de la page cible
+                    const targetPageId = this.getAttribute('href').replace('.html', '');
+                    
+                    // Masquer toutes les pages
+                    pages.forEach(page => {
+                        page.classList.remove('active');
+                    });
+                    
+                    // Afficher la page cible
+                    document.getElementById(targetPageId).classList.add('active');
+                    
+                    // Mettre à jour la navigation active
+                    navLinks.forEach(navLink => {
+                        navLink.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                    
+                    // Faire défiler vers le haut
+                    window.scrollTo(0, 0);
+                });
+            });
+            
+            // Gestion des formulaires de contact
+            const contactForms = document.querySelectorAll('form');
+            contactForms.forEach(form => {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('Merci pour votre message! Nous vous répondrons dans les plus brefs délais.');
+                    this.reset();
+                });
+            });
+        });
+    </script>
+</body>
+</html>
