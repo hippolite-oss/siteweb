@@ -313,6 +313,7 @@
             padding: 180px 0 100px;
             margin-top: 80px;
             position: relative;
+            overflow: hidden;
         }
 
         .hero-content {
@@ -383,6 +384,14 @@
             overflow: hidden;
             border-radius: var(--border-radius);
             box-shadow: var(--shadow);
+            transform: translateX(50px);
+            opacity: 0;
+            transition: all 0.8s ease;
+        }
+
+        .about-image.animate {
+            transform: translateX(0);
+            opacity: 1;
         }
 
         .about-image img {
@@ -415,6 +424,13 @@
             height: 100%;
             display: flex;
             flex-direction: column;
+            transform: translateY(50px);
+            opacity: 0;
+        }
+
+        .service-card.animate {
+            transform: translateY(0);
+            opacity: 1;
         }
 
         .service-card:hover {
@@ -464,6 +480,7 @@
             color: white;
             text-align: center;
             padding: 80px 0;
+            position: relative;
         }
 
         .stats-grid {
@@ -474,6 +491,14 @@
 
         .stat-item {
             padding: 20px;
+            transform: scale(0.8);
+            opacity: 0;
+            transition: all 0.6s ease;
+        }
+
+        .stat-item.animate {
+            transform: scale(1);
+            opacity: 1;
         }
 
         .stat-item i {
@@ -511,6 +536,14 @@
             box-shadow: var(--shadow);
             text-align: center;
             margin: 0 15px;
+            transform: translateY(30px);
+            opacity: 0;
+            transition: all 0.6s ease;
+        }
+
+        .testimonial-item.animate {
+            transform: translateY(0);
+            opacity: 1;
         }
 
         .testimonial-text {
@@ -562,6 +595,13 @@
             box-shadow: var(--shadow);
             transition: var(--transition);
             height: 200px;
+            transform: scale(0.9);
+            opacity: 0;
+        }
+
+        .gallery-item.animate {
+            transform: scale(1);
+            opacity: 1;
         }
 
         .gallery-item:hover {
@@ -600,6 +640,14 @@
             display: flex;
             align-items: flex-start;
             margin-bottom: 15px;
+            transform: translateX(-20px);
+            opacity: 0;
+            transition: all 0.5s ease;
+        }
+
+        .contact-detail.animate {
+            transform: translateX(0);
+            opacity: 1;
         }
 
         .contact-detail i {
@@ -611,6 +659,14 @@
 
         .contact-form .form-group {
             margin-bottom: 20px;
+            transform: translateX(20px);
+            opacity: 0;
+            transition: all 0.5s ease;
+        }
+
+        .contact-form .form-group.animate {
+            transform: translateX(0);
+            opacity: 1;
         }
 
         .contact-form label {
@@ -772,6 +828,13 @@
             border-radius: var(--border-radius);
             box-shadow: var(--shadow);
             transition: var(--transition);
+            transform: translateY(30px);
+            opacity: 0;
+        }
+
+        .value-card.animate {
+            transform: translateY(0);
+            opacity: 1;
         }
 
         .value-card:hover {
@@ -796,6 +859,14 @@
             background-color: white;
             border-radius: var(--border-radius);
             box-shadow: var(--shadow);
+            transform: translateX(-50px);
+            opacity: 0;
+            transition: all 0.6s ease;
+        }
+
+        .service-detail.animate {
+            transform: translateX(0);
+            opacity: 1;
         }
 
         .service-detail h2 {
@@ -843,6 +914,14 @@
             text-align: center;
             padding: 20px;
             position: relative;
+            transform: translateY(30px);
+            opacity: 0;
+            transition: all 0.5s ease;
+        }
+
+        .step.animate {
+            transform: translateY(0);
+            opacity: 1;
         }
 
         .step-number {
@@ -980,6 +1059,18 @@
             100% { transform: rotate(360deg); }
         }
 
+        /* Progress Bar */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            z-index: 1001;
+            transition: width 0.3s ease;
+        }
+
         /* Responsive Design */
         @media (max-width: 992px) {
             .about-content,
@@ -1074,6 +1165,9 @@
     <!-- Skip to main content for accessibility -->
     <a href="#mainContent" class="skip-link">Aller au contenu principal</a>
 
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progressBar"></div>
+
     <!-- Header -->
     <header id="mainHeader">
         <div class="container header-container">
@@ -1135,7 +1229,7 @@
                             <p>Nous offrons un environnement d'apprentissage stimulant qui encourage la pensée critique, la créativité et l'engagement communautaire.</p>
                             <a href="#about" class="btn nav-link" data-page="about">En savoir plus</a>
                         </div>
-                        <div class="about-image">
+                        <div class="about-image" id="aboutImage">
                             <img src="d2.jpg" alt="Campus de l'Université GASA" loading="lazy">
                         </div>
                     </div>
@@ -1146,22 +1240,22 @@
             <section class="stats">
                 <div class="container">
                     <div class="stats-grid">
-                        <div class="stat-item">
+                        <div class="stat-item" id="stat1">
                             <i class="fas fa-graduation-cap"></i>
                             <div class="stat-number" data-count="15000">0</div>
                             <div class="stat-text">Étudiants</div>
                         </div>
-                        <div class="stat-item">
+                        <div class="stat-item" id="stat2">
                             <i class="fas fa-user-graduate"></i>
                             <div class="stat-number" data-count="350">0</div>
                             <div class="stat-text">Enseignants</div>
                         </div>
-                        <div class="stat-item">
+                        <div class="stat-item" id="stat3">
                             <i class="fas fa-book"></i>
                             <div class="stat-number" data-count="120">0</div>
                             <div class="stat-text">Programmes</div>
                         </div>
-                        <div class="stat-item">
+                        <div class="stat-item" id="stat4">
                             <i class="fas fa-building"></i>
                             <div class="stat-number" data-count="40">0</div>
                             <div class="stat-text">Années d'expérience</div>
@@ -1178,7 +1272,7 @@
                         <p>Découvrez les programmes et services qui font de l'UATM-GASA un établissement d'exception</p>
                     </div>
                     <div class="services-grid">
-                        <div class="service-card">
+                        <div class="service-card" id="service1">
                             <div class="service-img">
                                 <img src="h.jpg" alt="Formations académiques" loading="lazy">
                             </div>
@@ -1188,7 +1282,7 @@
                                 <a href="#services" class="btn nav-link" data-page="services">En savoir plus</a>
                             </div>
                         </div>
-                        <div class="service-card">
+                        <div class="service-card" id="service2">
                             <div class="service-img">
                                 <img src="d1.jpg" alt="Recherche et Innovation" loading="lazy">
                             </div>
@@ -1198,7 +1292,7 @@
                                 <a href="#services" class="btn nav-link" data-page="services">En savoir plus</a>
                             </div>
                         </div>
-                        <div class="service-card">
+                        <div class="service-card" id="service3">
                             <div class="service-img">
                                 <img src="d3.jpg" alt="Vie Étudiante" loading="lazy">
                             </div>
@@ -1220,7 +1314,7 @@
                         <p>Ce que nos étudiants et diplômés disent de leur expérience à GASA</p>
                     </div>
                     <div class="testimonials-slider">
-                        <div class="testimonial-item">
+                        <div class="testimonial-item" id="testimonial1">
                             <p class="testimonial-text">"L'Université GASA m'a offert une formation d'excellence qui m'a permis de décrocher mon premier emploi avant même l'obtention de mon diplôme. Les enseignants sont dévoués et les installations sont modernes."</p>
                             <div class="testimonial-author">
                                 <div class="author-img">
@@ -1232,7 +1326,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="testimonial-item">
+                        <div class="testimonial-item" id="testimonial2">
                             <p class="testimonial-text">"La recherche à GASA est à la pointe de la technologie. J'ai eu l'opportunité de travailler sur des projets innovants qui ont abouti à des publications scientifiques."</p>
                             <div class="testimonial-author">
                                 <div class="author-img">
@@ -1256,16 +1350,16 @@
                         <p>Découvrez la vie sur notre campus en images</p>
                     </div>
                     <div class="gallery-grid">
-                        <div class="gallery-item">
+                        <div class="gallery-item" id="gallery1">
                             <img src="h.jpg" alt="Bibliothèque universitaire" loading="lazy">
                         </div>
-                        <div class="gallery-item">
+                        <div class="gallery-item" id="gallery2">
                             <img src="d1.jpg" alt="Laboratoire de recherche" loading="lazy">
                         </div>
-                        <div class="gallery-item">
+                        <div class="gallery-item" id="gallery3">
                             <img src="d2.jpg" alt="Cérémonie de remise de diplômes" loading="lazy">
                         </div>
-                        <div class="gallery-item">
+                        <div class="gallery-item" id="gallery4">
                             <img src="d3.jpg" alt="Étudiants en discussion" loading="lazy">
                         </div>
                     </div>
@@ -1283,21 +1377,21 @@
                         <div class="contact-info">
                             <h3>Informations de Contact</h3>
                             <div class="contact-details">
-                                <div class="contact-detail">
+                                <div class="contact-detail" id="contact1">
                                     <i class="fas fa-map-marker-alt"></i>
                                     <div>
                                         <h4>Adresse</h4>
                                         <p>123 Avenue de l'Université<br>Cotonou, Bénin</p>
                                     </div>
                                 </div>
-                                <div class="contact-detail">
+                                <div class="contact-detail" id="contact2">
                                     <i class="fas fa-phone"></i>
                                     <div>
                                         <h4>Téléphone</h4>
                                         <p>+229 12 34 56 78</p>
                                     </div>
                                 </div>
-                                <div class="contact-detail">
+                                <div class="contact-detail" id="contact3">
                                     <i class="fas fa-envelope"></i>
                                     <div>
                                         <h4>Email</h4>
@@ -1314,19 +1408,19 @@
                         </div>
                         <div class="contact-form">
                             <form id="contactForm">
-                                <div class="form-group">
+                                <div class="form-group" id="form1">
                                     <label for="name">Nom Complet</label>
                                     <input type="text" id="name" required>
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group" id="form2">
                                     <label for="email">Adresse Email</label>
                                     <input type="email" id="email" required>
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group" id="form3">
                                     <label for="subject">Sujet</label>
                                     <input type="text" id="subject" required>
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group" id="form4">
                                     <label for="message">Message</label>
                                     <textarea id="message" rows="5" required></textarea>
                                 </div>
@@ -1358,22 +1452,22 @@
                     </div>
                 </div>
                 <div class="values-grid">
-                    <div class="value-card">
+                    <div class="value-card" id="value1">
                         <i class="fas fa-graduation-cap"></i>
                         <h3>Excellence Académique</h3>
                         <p>Nous nous engageons à offrir une éducation de la plus haute qualité, avec des programmes rigoureux et des professeurs dévoués.</p>
                     </div>
-                    <div class="value-card">
+                    <div class="value-card" id="value2">
                         <i class="fas fa-lightbulb"></i>
                         <h3>Innovation</h3>
                         <p>Nous encourageons la pensée créative et l'innovation à travers la recherche et l'expérimentation.</p>
                     </div>
-                    <div class="value-card">
+                    <div class="value-card" id="value3">
                         <i class="fas fa-users"></i>
                         <h3>Communauté</h3>
                         <p>Nous cultivons un environnement inclusif où chaque membre de notre communauté peut s'épanouir.</p>
                     </div>
-                    <div class="value-card">
+                    <div class="value-card" id="value4">
                         <i class="fas fa-globe"></i>
                         <h3>Ouverture Internationale</h3>
                         <p>Nous préparons nos étudiants à réussir dans un monde globalisé avec des programmes internationaux.</p>
@@ -1406,7 +1500,7 @@
                 </div>
             </div>
             <div class="container page-content services-page">
-                <div class="service-detail">
+                <div class="service-detail" id="detail1">
                     <h2>Formations Académiques</h2>
                     <p>L'Université GASA propose une large gamme de programmes académiques conçus pour répondre aux besoins d'un monde en constante évolution. Nos formations couvrent divers domaines :</p>
                     <img src="h4.jpg" alt="Formations académiques" loading="lazy">
@@ -1419,7 +1513,7 @@
                     </ul>
                     <p>Tous nos programmes sont accrédités et conçus avec l'aide de professionnels de l'industrie pour garantir leur pertinence et leur qualité.</p>
                 </div>
-                <div class="service-detail">
+                <div class="service-detail" id="detail2">
                     <h2>Recherche et Innovation</h2>
                     <p>La recherche est au cœur de notre mission éducative. Nos centres de recherche travaillent sur des projets innovants dans divers domaines :</p>
                     <img src="d5.jpg" alt="Recherche et innovation" loading="lazy">
@@ -1432,7 +1526,7 @@
                     </ul>
                     <p>Nos étudiants et chercheurs bénéficient de laboratoires équipés des dernières technologies et de partenariats avec des entreprises leaders.</p>
                 </div>
-                <div class="service-detail">
+                <div class="service-detail" id="detail3">
                     <h2>Vie Étudiante</h2>
                     <p>La vie sur le campus de GASA est riche et diversifiée, offrant de nombreuses opportunités d'épanouissement personnel et professionnel :</p>
                     <img src="h3.jpg" alt="Vie étudiante" loading="lazy">
@@ -1460,27 +1554,27 @@
                 <div class="admissions-process">
                     <h2>Processus d'Admission</h2>
                     <div class="process-steps">
-                        <div class="step">
+                        <div class="step" id="step1">
                             <div class="step-number">1</div>
                             <h3>Dépôt de Candidature</h3>
                             <p>Remplissez le formulaire de candidature en ligne avec vos informations personnelles et académiques.</p>
                         </div>
-                        <div class="step">
+                        <div class="step" id="step2">
                             <div class="step-number">2</div>
                             <h3>Soumission des Documents</h3>
                             <p>Téléchargez tous les documents requis (diplômes, relevés de notes, lettres de recommandation).</p>
                         </div>
-                        <div class="step">
+                        <div class="step" id="step3">
                             <div class="step-number">3</div>
                             <h3>Évaluation du Dossier</h3>
                             <p>Notre comité d'admission examine votre dossier sous tous ses aspects.</p>
                         </div>
-                        <div class="step">
+                        <div class="step" id="step4">
                             <div class="step-number">4</div>
                             <h3>Entretien</h3>
                             <p>Si votre dossier est retenu, vous serez convoqué pour un entretien avec un membre du comité.</p>
                         </div>
-                        <div class="step">
+                        <div class="step" id="step5">
                             <div class="step-number">5</div>
                             <h3>Résultat Final</h3>
                             <p>Vous recevrez la décision d'admission par email dans les 2 semaines suivant l'entretien.</p>
@@ -1680,6 +1774,7 @@
             const mainHeader = document.getElementById('mainHeader');
             const backToTop = document.getElementById('backToTop');
             const loadingSpinner = document.getElementById('loadingSpinner');
+            const progressBar = document.getElementById('progressBar');
             
             // Afficher le spinner de chargement
             function showLoading() {
@@ -1735,6 +1830,9 @@
                         
                         // Mettre à jour l'URL
                         history.pushState(null, null, `#${targetPageId}`);
+                        
+                        // Réinitialiser les animations
+                        resetAnimations();
                         
                         // Masquer le spinner
                         hideLoading();
@@ -1807,6 +1905,16 @@
                 } else {
                     backToTop.classList.remove('visible');
                 }
+                
+                // Progress bar
+                const winHeight = window.innerHeight;
+                const docHeight = document.documentElement.scrollHeight;
+                const scrollTop = window.pageYOffset;
+                const scrollPercent = (scrollTop) / (docHeight - winHeight) * 100;
+                progressBar.style.width = scrollPercent + '%';
+                
+                // Déclencher les animations au défilement
+                triggerScrollAnimations();
             });
             
             // Back to top functionality
@@ -1852,21 +1960,36 @@
             
             // Initialiser les animations au défilement
             function initScrollAnimations() {
-                const animatedElements = document.querySelectorAll('.service-card, .value-card, .gallery-item, .step');
-                
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.style.animation = `fadeInUp 0.6s ease forwards`;
-                            observer.unobserve(entry.target);
-                        }
-                    });
-                }, { threshold: 0.1 });
+                // Ajouter la classe animate aux éléments déjà visibles
+                triggerScrollAnimations();
+            }
+            
+            // Déclencher les animations au défilement
+            function triggerScrollAnimations() {
+                const animatedElements = document.querySelectorAll('.service-card, .value-card, .gallery-item, .step, .about-image, .stat-item, .testimonial-item, .contact-detail, .form-group, .service-detail');
                 
                 animatedElements.forEach(element => {
-                    element.style.opacity = '0';
-                    observer.observe(element);
+                    const elementTop = element.getBoundingClientRect().top;
+                    const elementVisible = 150;
+                    
+                    if (elementTop < window.innerHeight - elementVisible) {
+                        element.classList.add('animate');
+                    }
                 });
+            }
+            
+            // Réinitialiser les animations pour les pages
+            function resetAnimations() {
+                const animatedElements = document.querySelectorAll('.service-card, .value-card, .gallery-item, .step, .about-image, .stat-item, .testimonial-item, .contact-detail, .form-group, .service-detail');
+                
+                animatedElements.forEach(element => {
+                    element.classList.remove('animate');
+                });
+                
+                // Redéclencher les animations après un court délai
+                setTimeout(() => {
+                    triggerScrollAnimations();
+                }, 100);
             }
             
             // Gestion des images pour le lazy loading
