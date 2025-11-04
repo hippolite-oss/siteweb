@@ -903,20 +903,65 @@
             left: 0;
         }
 
-        .admissions-page .process-steps {
+        /* ===== AMÉLIORATIONS POUR LA SECTION ADMISSIONS ===== */
+        .admissions-page {
+            max-width: 1200px;
+        }
+
+        .admissions-intro {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 0 20px;
+        }
+
+        .admissions-intro h2 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-size: 2.2rem;
+        }
+
+        .admissions-intro p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .admissions-process {
+            margin-bottom: 60px;
+        }
+
+        .process-steps {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 30px;
             margin: 40px 0;
+            position: relative;
+        }
+
+        .process-steps::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 50px;
+            right: 50px;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            z-index: 1;
         }
 
         .step {
             text-align: center;
-            padding: 20px;
+            padding: 25px 15px;
             position: relative;
+            z-index: 2;
             transform: translateY(30px);
             opacity: 0;
             transition: all 0.5s ease;
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
         }
 
         .step.animate {
@@ -924,10 +969,15 @@
             opacity: 1;
         }
 
+        .step:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
         .step-number {
-            width: 40px;
-            height: 40px;
-            background-color: var(--primary-color);
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
             color: white;
             border-radius: 50%;
             display: flex;
@@ -935,19 +985,170 @@
             justify-content: center;
             margin: 0 auto 15px;
             font-weight: bold;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 10px rgba(26, 61, 124, 0.3);
+            position: relative;
+            z-index: 3;
         }
 
         .step h3 {
             color: var(--primary-color);
             margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+
+        .step p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        .admissions-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+
+        .feature-card {
+            background-color: white;
+            padding: 30px 20px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: var(--transition);
+            transform: translateY(30px);
+            opacity: 0;
+        }
+
+        .feature-card.animate {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .feature-card i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
         }
 
         .application-form {
             background-color: white;
-            padding: 30px;
+            padding: 40px;
             border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
+            box-shadow: var(--shadow-lg);
             margin-top: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .application-form::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+        }
+
+        .application-form h2 {
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            text-align: center;
+            font-size: 2rem;
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .form-header h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .form-header p {
+            color: var(--text-light);
+        }
+
+        .form-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: var(--light-color);
+            border-radius: var(--border-radius);
+        }
+
+        .form-section h4 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            align-items: center;
+        }
+
+        .form-section h4 i {
+            margin-right: 10px;
+            color: var(--secondary-color);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-family: inherit;
+            transition: var(--transition);
+            background-color: white;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(26, 61, 124, 0.1);
+        }
+
+        .form-actions {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .btn-large {
+            padding: 15px 40px;
+            font-size: 1.1rem;
         }
 
         .contact-page .map-container {
@@ -1086,6 +1287,9 @@
             .form-row {
                 grid-template-columns: 1fr;
             }
+            .process-steps::before {
+                display: none;
+            }
         }
 
         @media (max-width: 768px) {
@@ -1137,6 +1341,9 @@
             .process-steps {
                 grid-template-columns: 1fr;
             }
+            .application-form {
+                padding: 25px;
+            }
         }
 
         @media (max-width: 576px) {
@@ -1156,6 +1363,9 @@
                 font-size: 2rem;
             }
             .footer-content {
+                grid-template-columns: 1fr;
+            }
+            .admissions-features {
                 grid-template-columns: 1fr;
             }
         }
@@ -1542,7 +1752,7 @@
             </div>
         </section>
 
-        <!-- Page Admissions -->
+        <!-- Page Admissions - AMÉLIORÉE -->
         <section id="admissions" class="page">
             <div class="page-hero">
                 <div class="container">
@@ -1551,8 +1761,13 @@
                 </div>
             </div>
             <div class="container page-content admissions-page">
+                <div class="admissions-intro">
+                    <h2>Processus d'Admission Simplifié</h2>
+                    <p>Nous avons conçu un processus d'admission transparent et accessible pour vous accompagner à chaque étape de votre candidature. Découvrez comment rejoindre notre communauté universitaire.</p>
+                </div>
+                
                 <div class="admissions-process">
-                    <h2>Processus d'Admission</h2>
+                    <h2>Les Étapes de Votre Admission</h2>
                     <div class="process-steps">
                         <div class="step" id="step1">
                             <div class="step-number">1</div>
@@ -1582,46 +1797,123 @@
                     </div>
                 </div>
                 
+                <div class="admissions-features">
+                    <div class="feature-card" id="feature1">
+                        <i class="fas fa-clock"></i>
+                        <h3>Délais Rapides</h3>
+                        <p>Réponse sous 15 jours ouvrés après soumission complète du dossier.</p>
+                    </div>
+                    <div class="feature-card" id="feature2">
+                        <i class="fas fa-euro-sign"></i>
+                        <h3>Frais Modiques</h3>
+                        <p>Des frais de candidature accessibles et des possibilités d'exonération.</p>
+                    </div>
+                    <div class="feature-card" id="feature3">
+                        <i class="fas fa-headset"></i>
+                        <h3>Support Continu</h3>
+                        <p>Notre équipe est disponible pour vous accompagner tout au long du processus.</p>
+                    </div>
+                    <div class="feature-card" id="feature4">
+                        <i class="fas fa-graduation-cap"></i>
+                        <h3>Accompagnement</h3>
+                        <p>Un suivi personnalisé dès votre admission jusqu'à votre intégration.</p>
+                    </div>
+                </div>
+                
                 <div class="application-form">
-                    <h2>Formulaire de Candidature</h2>
+                    <div class="form-header">
+                        <h3>Formulaire de Candidature en Ligne</h3>
+                        <p>Remplissez soigneusement ce formulaire. Les champs marqués d'un * sont obligatoires.</p>
+                    </div>
+                    
                     <form id="admissionForm">
-                        <div class="form-row">
+                        <div class="form-section">
+                            <h4><i class="fas fa-user"></i> Informations Personnelles</h4>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="firstName">Prénom *</label>
+                                    <input type="text" id="firstName" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="lastName">Nom *</label>
+                                    <input type="text" id="lastName" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="birthDate">Date de Naissance *</label>
+                                    <input type="date" id="birthDate" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="nationality">Nationalité *</label>
+                                    <input type="text" id="nationality" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="emailAdmission">Adresse Email *</label>
+                                    <input type="email" id="emailAdmission" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone">Téléphone *</label>
+                                    <input type="tel" id="phone" required>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-section">
+                            <h4><i class="fas fa-graduation-cap"></i> Informations Académiques</h4>
                             <div class="form-group">
-                                <label for="firstName">Prénom</label>
-                                <input type="text" id="firstName" required>
+                                <label for="program">Programme d'études souhaité *</label>
+                                <select id="program" required>
+                                    <option value="">Sélectionnez un programme</option>
+                                    <option value="licence">Licence</option>
+                                    <option value="master">Master</option>
+                                    <option value="doctorat">Doctorat</option>
+                                    <option value="formation-continue">Formation Continue</option>
+                                </select>
                             </div>
                             <div class="form-group">
-                                <label for="lastName">Nom</label>
-                                <input type="text" id="lastName" required>
+                                <label for="specialization">Spécialisation / Domaine d'études *</label>
+                                <input type="text" id="specialization" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="previousStudies">Dernier diplôme obtenu *</label>
+                                <input type="text" id="previousStudies" required>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label for="emailAdmission">Adresse Email</label>
-                            <input type="email" id="emailAdmission" required>
+                        
+                        <div class="form-section">
+                            <h4><i class="fas fa-file-alt"></i> Documents à Fournir</h4>
+                            <div class="form-group">
+                                <label for="cv">CV (PDF) *</label>
+                                <input type="file" id="cv" accept=".pdf" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="transcripts">Relevés de notes (PDF) *</label>
+                                <input type="file" id="transcripts" accept=".pdf" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="diploma">Copie du diplôme (PDF)</label>
+                                <input type="file" id="diploma" accept=".pdf">
+                            </div>
+                            <div class="form-group">
+                                <label for="idDocument">Copie de la pièce d'identité *</label>
+                                <input type="file" id="idDocument" accept=".pdf,.jpg,.jpeg,.png" required>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="phone">Téléphone</label>
-                            <input type="tel" id="phone" required>
+                        
+                        <div class="form-section">
+                            <h4><i class="fas fa-edit"></i> Lettre de Motivation</h4>
+                            <div class="form-group">
+                                <label for="messageAdmission">Pourquoi souhaitez-vous intégrer l'UATM-GASA ? *</label>
+                                <textarea id="messageAdmission" rows="6" placeholder="Décrivez vos motivations, vos objectifs académiques et professionnels..." required></textarea>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="program">Programme d'études</label>
-                            <select id="program" required>
-                                <option value="">Sélectionnez un programme</option>
-                                <option value="licence">Licence</option>
-                                <option value="master">Master</option>
-                                <option value="doctorat">Doctorat</option>
-                                <option value="formation-continue">Formation Continue</option>
-                            </select>
+                        
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-large">Soumettre ma Candidature</button>
                         </div>
-                        <div class="form-group">
-                            <label for="messageAdmission">Lettre de motivation</label>
-                            <textarea id="messageAdmission" rows="5" required></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="cv">CV (PDF)</label>
-                            <input type="file" id="cv" accept=".pdf">
-                        </div>
-                        <button type="submit" class="btn">Soumettre ma Candidature</button>
                     </form>
                 </div>
             </div>
@@ -1966,7 +2258,7 @@
             
             // Déclencher les animations au défilement
             function triggerScrollAnimations() {
-                const animatedElements = document.querySelectorAll('.service-card, .value-card, .gallery-item, .step, .about-image, .stat-item, .testimonial-item, .contact-detail, .form-group, .service-detail');
+                const animatedElements = document.querySelectorAll('.service-card, .value-card, .gallery-item, .step, .about-image, .stat-item, .testimonial-item, .contact-detail, .form-group, .service-detail, .feature-card');
                 
                 animatedElements.forEach(element => {
                     const elementTop = element.getBoundingClientRect().top;
@@ -1980,7 +2272,7 @@
             
             // Réinitialiser les animations pour les pages
             function resetAnimations() {
-                const animatedElements = document.querySelectorAll('.service-card, .value-card, .gallery-item, .step, .about-image, .stat-item, .testimonial-item, .contact-detail, .form-group, .service-detail');
+                const animatedElements = document.querySelectorAll('.service-card, .value-card, .gallery-item, .step, .about-image, .stat-item, .testimonial-item, .contact-detail, .form-group, .service-detail, .feature-card');
                 
                 animatedElements.forEach(element => {
                     element.classList.remove('animate');
